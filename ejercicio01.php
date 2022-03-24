@@ -11,30 +11,32 @@
 <?php
 	include ("inc_bd_connect.php");
 		
-		$result = pg_query("SELECT * FROM alumno");
+		$result = mysqli_query($connect, "SELECT * FROM alumno");
 		if ($result)
 		{
-					echo "<table border = '1'> \n"; 
-
-			$registros= pg_num_rows($result);
-			for ($i=0;$i<$registros;$i++)
-				{
-				$row = pg_fetch_array ($result,$i );
-				echo "<tr><td>", $row['idalumno'], "</td>";
-				echo "<td>", $row['nocta'], "</td>";
-				echo "<td>", $row['noalumno'], "</td>";
-				echo "<td>", $row['appaterno'], "</td>";
-				echo "<td>", $row['apmaterno'], "</td></tr> \n ";
-				
-			}
-					echo  "</table>";
-
 			
-			pg_free_result($result);
+			$registros= mysqli_num_rows($result);
+			
+			echo "<p> Número de registros: ". $registros ." </p> \n"; 
 
-		}
+			echo "<table border = '1'> \n"; 
 
+            while($row=mysqli_fetch_array($result)){
+             		echo "<tr>
+                     <td align='right'> $row[idalumno] </td>
+                     <td> $row[noalumno] </td>
+                     <td> $row[appaterno] </td>
+                     <td> $row[apmaterno] </td>
+                     <td> $row[nocta] </td>
+                  </tr>";}
 
+            echo "</table>";
+
+			mysqli_free_result($result);
+
+		}   
+
+    mysqli_close($connect);
 	include ('inc_footer.html') 
 ?>
 

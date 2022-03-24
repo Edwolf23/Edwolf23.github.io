@@ -15,7 +15,7 @@
 		
 			<ul>
 			
-			<li><a href="../codeigniter/index.php/admin_controller/add2">Darte de alta en la lista de alumnos</a></li> 
+			
 			
 			<li><a href="./ejercicio01.php">Ejercicio BD 1</a></li> 
 			<li><a href="./ejercicio02.php">Ejercicio BD 2</a></li> 

@@ -18,13 +18,13 @@
 		$login = $_POST['login'];
 		$password = $_POST['password'];
 		
-		$result = pg_query("SELECT appaterno FROM alumno WHERE noalumno = '$login'");
+		$result = mysqli_query($connect,"SELECT appaterno FROM alumno WHERE noalumno = '$login'");
 		if ($result)
 		{
-			$row = pg_fetch_array($result);
-			if ($row['appaterno'] == $password)
+			$row = mysqli_fetch_array($result);
+			if ($row[appaterno] == $password)
 				$loginOK = true;
-			pg_free_result($result);
+			mysqli_free_result($result);
 		}
 	}
 
@@ -43,8 +43,8 @@
 		
 ?>
 
-		<p>Este Es un ejemplo.</p>
-		
+		<p>Acceso Válido!</p>
+		<p>Este es un ejemplo.</p>
 <?php
 	}
 	include ('inc_footer.html') 
